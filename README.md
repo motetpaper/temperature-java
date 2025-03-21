@@ -16,6 +16,6 @@ System.out.println((new Kelvin(t)));
 // converted to Rankine with precision
 System.out.println((new Kelvin(t)).toRankine());
 
-// nicely displayed with units in Rankine scale
+// nicely displayed with units in degrees Rankine
 System.out.println((new Kelvin(t)).asRankine());
 ```
