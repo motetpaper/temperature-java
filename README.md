@@ -2,7 +2,7 @@
 simple temperature conversion Java library
 
 > [!IMPORTANT]
-> **This is a Java source repo.** The `docs/` folder is the location of the javadoc (documentation). The versioned JAR file will be available in releases.
+> **This is a Java source repo.** The `docs/` folder is the location of the javadoc (documentation). The versioned JAR file will be available in [latest releases](https://github.com/motetpaper/temperature-java/releases/latest).
 
 ```java
 
