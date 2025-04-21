@@ -1,0 +1,61 @@
+# make a Java JAR file using GitHub repo contents 
+
+name: temperature-java-mkjar
+
+on: 
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+        - name: checkout
+          uses: actions/checkout@v4
+                      
+        - name: build the JAR file
+          id: mkjar
+          run: |
+            ## pre-flight env and tree check
+            #tree
+            #env
+
+            tag="$GITHUB_REF_NAME"
+            echo "${{ github.ref_name}}"
+             
+            ## compile every Java source file in the src/ folder 
+            ## into a class file to be placed in the out/ folder
+            find ./src/ -type f -name "*.java" | xargs javac -cp ./src/ -d ./out/
+
+            ## change directory to the out/ folder
+            cd out
+
+            ## this is how $GITHUB_REF_NAME looks in a workflow process
+            echo $tag
+            echo ${{ github.ref_name }}
+
+            ## create the jar using the io/ directory (as the root folder)
+            jar cvf motet-temperature-$tag.jar io
+            echo "motet-temperature-${{ github.ref_name }}.jar"
+
+            tree
+            
+        - name: release
+          uses: softprops/action-gh-release@v2
+          if: github.ref_type == 'tag'
+          with:
+            files: out/motet-temperature-${{ github.ref_name }}.jar
+            draft: true
+            body: |
+              # What's New in ${{ github.ref_name }}
+              
+              This is a release draft.
+                + Item 1.
+                + Item 2.
+                
