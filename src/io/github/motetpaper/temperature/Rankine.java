@@ -4,7 +4,7 @@ package io.github.motetpaper.temperature;
  * Represents the Rankine temperature scale.
  *
  * @author MOTETPAPER
- * @version 1.1
+ * @version 1.1.1
  */
 public final class Rankine implements Temperature {
 

@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
  * Represents Temperature scales and conversions
  *
  * @author MOTETPAPER
- * @version 1.1
+ * @version 1.1.1
  */
 public interface Temperature {
 
